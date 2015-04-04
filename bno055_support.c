@@ -66,7 +66,7 @@
  *	\param reg_data : This data read from the sensor, which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt);
+s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
 /*	\Brief: The function is used as SPI bus write
  *	\Return : Status of the SPI write
  *	\param dev_addr : The device address of the sensor
@@ -75,7 +75,7 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt);
  *		will be used for write the value into the register
  *	\param cnt : The no of byte of data to be write
  */
-s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt);
+s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
 /*
  * \Brief: I2C init routine
 */
@@ -112,7 +112,7 @@ s32 bno055_data_readout_template(void)
 	communication routine*/
 	s32 comres = ERROR;
 	/* variable used to set the power mode of the sensor*/
-	u8 power_mode = BNO055_ZERO_U8X;
+	bs_u8 power_mode = BNO055_ZERO_U8X;
 	/*********read raw accel data***********/
 	/* variable used to read the accel x data */
 	s16 accel_datax = BNO055_ZERO_U8X;
@@ -495,11 +495,11 @@ return comres;
  *		will be used for write the value into the register
  *	\param cnt : The no of byte of data to be write
  */
-s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
+s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
 	s32 iError = BNO055_ZERO_U8X;
-	u8 array[I2C_BUFFER_LEN];
-	u8 stringpos = BNO055_ZERO_U8X;
+	bs_u8 array[I2C_BUFFER_LEN];
+	bs_u8 stringpos = BNO055_ZERO_U8X;
 	array[BNO055_ZERO_U8X;] = reg_addr;
 	for (stringpos = BNO055_ZERO_U8X; stringpos < cnt; stringpos++) {
 		array[stringpos + BNO055_ONE_U8X] = *(reg_data + stringpos);
@@ -529,11 +529,11 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
  *	\param reg_data : This data read from the sensor, which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
+s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
 	s32 iError = BNO055_ZERO_U8X;
-	u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X;};
-	u8 stringpos = BNO055_ZERO_U8X;
+	bs_u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X;};
+	bs_u8 stringpos = BNO055_ZERO_U8X;
 	array[BNO055_ZERO_U8X;] = reg_addr;
 	/* Please take the below function as your reference
 	 * for read the data using I2C communication
