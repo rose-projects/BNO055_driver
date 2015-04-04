@@ -495,12 +495,12 @@ return comres;
  *		will be used for write the value into the register
  *	\param cnt : The no of byte of data to be write
  */
-bs_s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
+bs_s8 BNO055_I2C_bus_write(__attribute__((unused)) bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
 	bs_s32 iError = BNO055_ZERO_U8X;
-	bs_u8 array[I2C_BUFFER_LEN];
+	__attribute__((unused)) bs_u8 array[I2C_BUFFER_LEN];
 	bs_u8 stringpos = BNO055_ZERO_U8X;
-	array[BNO055_ZERO_U8X;] = reg_addr;
+	array[BNO055_ZERO_U8X] = reg_addr;
 	for (stringpos = BNO055_ZERO_U8X; stringpos < cnt; stringpos++) {
 		array[stringpos + BNO055_ONE_U8X] = *(reg_data + stringpos);
 	}
@@ -529,12 +529,12 @@ bs_s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u
  *	\param reg_data : This data read from the sensor, which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-bs_s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
+bs_s8 BNO055_I2C_bus_read(__attribute__((unused)) bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
 	bs_s32 iError = BNO055_ZERO_U8X;
-	bs_u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X;};
+	bs_u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X};
 	bs_u8 stringpos = BNO055_ZERO_U8X;
-	array[BNO055_ZERO_U8X;] = reg_addr;
+	array[BNO055_ZERO_U8X] = reg_addr;
 	/* Please take the below function as your reference
 	 * for read the data using I2C communication
 	 * add your I2C rad function here.
@@ -552,7 +552,7 @@ bs_s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8
 /*	Brief : The delay routine
  *	\param : delay in ms
 */
-void BNO055_delay_msek(bs_u32 msek)
+void BNO055_delay_msek(__attribute__((unused)) bs_u32 msek)
 {
 	/*Here you can write your own delay routine*/
 }
