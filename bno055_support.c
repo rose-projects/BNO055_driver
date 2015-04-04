@@ -66,7 +66,7 @@
  *	\param reg_data : This data read from the sensor, which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
+bs_s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
 /*	\Brief: The function is used as SPI bus write
  *	\Return : Status of the SPI write
  *	\param dev_addr : The device address of the sensor
@@ -75,22 +75,22 @@ s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cn
  *		will be used for write the value into the register
  *	\param cnt : The no of byte of data to be write
  */
-s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
+bs_s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt);
 /*
  * \Brief: I2C init routine
 */
-s8 I2C_routine(void);
+bs_s8 I2C_routine(void);
 #endif
 /********************End of I2C function declarations***********************/
 /*	Brief : The delay routine
  *	\param : delay in ms
 */
-void BNO055_delay_msek(u32 msek);
+void BNO055_delay_msek(bs_u32 msek);
 /* This function is an example for reading sensor data
  *	\param: None
  *	\return: communication result
  */
-s32 bno055_data_readout_template(void);
+bs_s32 bno055_data_readout_template(void);
 /*----------------------------------------------------------------------------*
  *  struct bno055_t parameters can be accessed by using BNO055
  *	BNO055_t having the following parameters
@@ -106,82 +106,82 @@ struct bno055_t bno055;
  *	\param: None
  *	\return: communication result
  */
-s32 bno055_data_readout_template(void)
+bs_s32 bno055_data_readout_template(void)
 {
 	/* Variable used to return value of
 	communication routine*/
-	s32 comres = ERROR;
+	bs_s32 comres = ERROR;
 	/* variable used to set the power mode of the sensor*/
 	bs_u8 power_mode = BNO055_ZERO_U8X;
 	/*********read raw accel data***********/
 	/* variable used to read the accel x data */
-	s16 accel_datax = BNO055_ZERO_U8X;
+	bs_s16 accel_datax = BNO055_ZERO_U8X;
 	 /* variable used to read the accel y data */
-	s16 accel_datay = BNO055_ZERO_U8X;
+	bs_s16 accel_datay = BNO055_ZERO_U8X;
 	/* variable used to read the accel z data */
-	s16 accel_dataz = BNO055_ZERO_U8X;
+	bs_s16 accel_dataz = BNO055_ZERO_U8X;
 	/* variable used to read the accel xyz data */
 	struct bno055_accel_t accel_xyz;
 
 	/*********read raw mag data***********/
 	/* variable used to read the mag x data */
-	s16 mag_datax  = BNO055_ZERO_U8X;
+	bs_s16 mag_datax  = BNO055_ZERO_U8X;
 	/* variable used to read the mag y data */
-	s16 mag_datay  = BNO055_ZERO_U8X;
+	bs_s16 mag_datay  = BNO055_ZERO_U8X;
 	/* variable used to read the mag z data */
-	s16 mag_dataz  = BNO055_ZERO_U8X;
+	bs_s16 mag_dataz  = BNO055_ZERO_U8X;
 	/* structure used to read the mag xyz data */
 	struct bno055_mag_t mag_xyz;
 
 	/***********read raw gyro data***********/
 	/* variable used to read the gyro x data */
-	s16 gyro_datax = BNO055_ZERO_U8X;
+	bs_s16 gyro_datax = BNO055_ZERO_U8X;
 	/* variable used to read the gyro y data */
-	s16 gyro_datay = BNO055_ZERO_U8X;
+	bs_s16 gyro_datay = BNO055_ZERO_U8X;
 	 /* variable used to read the gyro z data */
-	s16 gyro_dataz = BNO055_ZERO_U8X;
+	bs_s16 gyro_dataz = BNO055_ZERO_U8X;
 	 /* structure used to read the gyro xyz data */
 	struct bno055_gyro_t gyro_xyz;
 
 	/*************read raw Euler data************/
 	/* variable used to read the euler h data */
-	s16 euler_data_h = BNO055_ZERO_U8X;
+	bs_s16 euler_data_h = BNO055_ZERO_U8X;
 	 /* variable used to read the euler r data */
-	s16 euler_data_r = BNO055_ZERO_U8X;
+	bs_s16 euler_data_r = BNO055_ZERO_U8X;
 	/* variable used to read the euler p data */
-	s16 euler_data_p = BNO055_ZERO_U8X;
+	bs_s16 euler_data_p = BNO055_ZERO_U8X;
 	/* structure used to read the euler hrp data */
 	struct bno055_euler_t euler_hrp;
 
 	/************read raw quaternion data**************/
 	/* variable used to read the quaternion w data */
-	s16 quaternion_data_w = BNO055_ZERO_U8X;
+	bs_s16 quaternion_data_w = BNO055_ZERO_U8X;
 	/* variable used to read the quaternion x data */
-	s16 quaternion_data_x = BNO055_ZERO_U8X;
+	bs_s16 quaternion_data_x = BNO055_ZERO_U8X;
 	/* variable used to read the quaternion y data */
-	s16 quaternion_data_y = BNO055_ZERO_U8X;
+	bs_s16 quaternion_data_y = BNO055_ZERO_U8X;
 	/* variable used to read the quaternion z data */
-	s16 quaternion_data_z = BNO055_ZERO_U8X;
+	bs_s16 quaternion_data_z = BNO055_ZERO_U8X;
 	/* structure used to read the quaternion wxyz data */
 	struct bno055_quaternion_t quaternion_wxyz;
 
 	/************read raw linear acceleration data***********/
 	/* variable used to read the linear accel x data */
-	s16 linear_accel_data_x = BNO055_ZERO_U8X;
+	bs_s16 linear_accel_data_x = BNO055_ZERO_U8X;
 	/* variable used to read the linear accel y data */
-	s16 linear_accel_data_y = BNO055_ZERO_U8X;
+	bs_s16 linear_accel_data_y = BNO055_ZERO_U8X;
 	/* variable used to read the linear accel z data */
-	s16 linear_accel_data_z = BNO055_ZERO_U8X;
+	bs_s16 linear_accel_data_z = BNO055_ZERO_U8X;
 	/* structure used to read the linear accel xyz data */
 	struct bno055_linear_accel_t linear_acce_xyz;
 
 	/*****************read raw gravity sensor data****************/
 	/* variable used to read the gravity x data */
-	s16 gravity_data_x = BNO055_ZERO_U8X;
+	bs_s16 gravity_data_x = BNO055_ZERO_U8X;
 	/* variable used to read the gravity y data */
-	s16 gravity_data_y = BNO055_ZERO_U8X;
+	bs_s16 gravity_data_y = BNO055_ZERO_U8X;
 	/* variable used to read the gravity z data */
-	s16 gravity_data_z = BNO055_ZERO_U8X;
+	bs_s16 gravity_data_z = BNO055_ZERO_U8X;
 	/* structure used to read the gravity xyz data */
 	struct bno055_gravity_t gravity_xyz;
 
@@ -465,7 +465,7 @@ return comres;
  *	Delay function pointer: delay_msec
  *	I2C address: dev_addr
  *--------------------------------------------------------------------------*/
- s8 I2C_routine(void) {
+ bs_s8 I2C_routine(void) {
 
 	bno055.bus_write = BNO055_I2C_bus_write;
 	bno055.bus_read = BNO055_I2C_bus_read;
@@ -495,9 +495,9 @@ return comres;
  *		will be used for write the value into the register
  *	\param cnt : The no of byte of data to be write
  */
-s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
+bs_s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
-	s32 iError = BNO055_ZERO_U8X;
+	bs_s32 iError = BNO055_ZERO_U8X;
 	bs_u8 array[I2C_BUFFER_LEN];
 	bs_u8 stringpos = BNO055_ZERO_U8X;
 	array[BNO055_ZERO_U8X;] = reg_addr;
@@ -519,7 +519,7 @@ s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 c
 	* have to be initiated. For that cnt+1 operation done in the I2C write string function
 	* For more information please refer data sheet SPI communication:
 	*/
-	return (s8)iError;
+	return (bs_s8)iError;
 }
 
  /*	\Brief: The function is used as I2C bus read
@@ -529,9 +529,9 @@ s8 BNO055_I2C_bus_write(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 c
  *	\param reg_data : This data read from the sensor, which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
+bs_s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cnt)
 {
-	s32 iError = BNO055_ZERO_U8X;
+	bs_s32 iError = BNO055_ZERO_U8X;
 	bs_u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X;};
 	bs_u8 stringpos = BNO055_ZERO_U8X;
 	array[BNO055_ZERO_U8X;] = reg_addr;
@@ -547,12 +547,12 @@ s8 BNO055_I2C_bus_read(bs_u8 dev_addr, bs_u8 reg_addr, bs_u8 *reg_data, bs_u8 cn
 	for (stringpos = BNO055_ZERO_U8X; stringpos < cnt; stringpos++) {
 		*(reg_data + stringpos) = array[stringpos];
 	}
-	return (s8)iError;
+	return (bs_s8)iError;
 }
 /*	Brief : The delay routine
  *	\param : delay in ms
 */
-void BNO055_delay_msek(u32 msek)
+void BNO055_delay_msek(bs_u32 msek)
 {
 	/*Here you can write your own delay routine*/
 }
