@@ -500,7 +500,7 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 	s32 iError = BNO055_ZERO_U8X;
 	u8 array[I2C_BUFFER_LEN];
 	u8 stringpos = BNO055_ZERO_U8X;
-	array[BNO055_ZERO_U8X;] = reg_addr;
+	array[BNO055_ZERO_U8X] = reg_addr;
 	for (stringpos = BNO055_ZERO_U8X; stringpos < cnt; stringpos++) {
 		array[stringpos + BNO055_ONE_U8X] = *(reg_data + stringpos);
 	}
@@ -532,9 +532,9 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 {
 	s32 iError = BNO055_ZERO_U8X;
-	u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X;};
+	u8 array[I2C_BUFFER_LEN] = {BNO055_ZERO_U8X};
 	u8 stringpos = BNO055_ZERO_U8X;
-	array[BNO055_ZERO_U8X;] = reg_addr;
+	array[BNO055_ZERO_U8X] = reg_addr;
 	/* Please take the below function as your reference
 	 * for read the data using I2C communication
 	 * add your I2C rad function here.
@@ -552,7 +552,7 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 /*	Brief : The delay routine
  *	\param : delay in ms
 */
-void BNO055_delay_msek(u32 msek)
+void BNO055_delay_msek(__attribute__((unused)) u32 msek)
 {
 	/*Here you can write your own delay routine*/
 }
