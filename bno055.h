@@ -66,7 +66,19 @@
 * @note While porting the API please consider the following
 * @note Please check the version of C standard
 * @note Are you using Linux platform
+* @note Are you using a STM32F40x with ChibiOS
 */
+
+#define __STM32F40x__ 1
+
+/**********************************************************
+* These definition uses for define the ChibiOS
+* standard version data types
+***********************************************************/
+#ifdef __STM32F40x__
+#define STM32F40XX 1
+#include "../ChibiOS_2.6.7/os/hal/platforms/STM32F4xx/stm32f4xx.h"
+#else /* ! __STM32F40x__ */
 
 /*!
 * @brief For the Linux platform support
@@ -286,6 +298,7 @@ typedef	unsigned long int u64;/**< used for unsigned 64bit */
 #else
 #warning The data types defined above which not supported \
 define the data types manually
+#endif
 #endif
 #endif
 #endif
